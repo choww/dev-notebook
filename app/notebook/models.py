@@ -1,13 +1,18 @@
 from django.db import models
 from users.models import User
 
-class Tag(models.Model):
-    name = models.CharField(max_length=255)
+class Category(models.Model):
+    name = models.CharField(max_length=255, default='')
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    tags = models.ManyToManyField(Tag)
-    title = models.CharField(max_length=255)
-    body = models.TextField()
+    categories = models.ManyToManyField(Category, through='Tag')
+    title = models.CharField(max_length=255, default='')
+    body = models.TextField(default='')
     date = models.DateTimeField()
+
+class Tag(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
 
