@@ -15,9 +15,11 @@ SECRET_KEY = 'tz4=h9%f8xn&(nly47mwq_b@*5dypd@b@a99v(8*5szy4$4&p!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = ['*']
 
-ALLOWED_HOSTS = []
-
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/account'
+LOGOUT_REDIRECT_URL = '/'
 
 # Application definition
 
@@ -60,7 +62,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'users.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 
 # Database
