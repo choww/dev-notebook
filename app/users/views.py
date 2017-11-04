@@ -7,7 +7,7 @@ import pdb
 
 @login_required
 def account(request):
-    return render(request, 'account.html', {'user': request.user})
+    return render(request, 'users/account.html', {'user': request.user})
 
 def signup(request):
     if request.method == 'POST': 
@@ -21,7 +21,7 @@ def signup(request):
             return redirect('/account')
     else:
         form = SignupForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'users/signup.html', {'form': form})
 
 def signin(request):
     if request.method == 'POST':    
@@ -34,4 +34,4 @@ def signin(request):
             return redirect('/account')
     else:
         form = AuthenticationForm()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'users/login.html', {'form': form})
