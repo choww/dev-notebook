@@ -1,0 +1,25 @@
+{
+  "name": "dev-notebook",
+  "version": "1.0.0",
+  "description": "Built with Django 1.11.6",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/choww/dev-notebook.git"
+  },
+  "author": "carmen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/choww/dev-notebook/issues"
+  },
+  "homepage": "https://github.com/choww/dev-notebook#readme",
+  "devDependencies": {
+    "browserify": "^14.5.0",
+    "bulma": "^0.6.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  }
+}
