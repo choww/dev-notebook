@@ -2,7 +2,7 @@
 {% block title %}Dev Notebook{% endblock %}
 
 {% block content %}
-  {% if request.user.authenticated %}
+  {% if request.user.is_authenticated %}
     <div>hi {{ user.username }}</div>
   {% else %}
     <a href="/login">Login</a> 
