@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^signup', user_views.signup, name='signup'),
     url(r'^logout', auth_views.logout, {'next_page': '/'}, name='logout'),
 
+    url(r'^account/edit', user_views.edit, name='edit-account'),
     url(r'^account', user_views.account, name='account'),
     url(r'^posts', notebook_views.index, name='all-posts'),
     url(r'^new-post', notebook_views.create, name='new-post'),

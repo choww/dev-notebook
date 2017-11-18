@@ -1,12 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .forms import *
-
-@login_required
-def account(request):
-    return render(request, 'users/account.html', {'user': request.user})
+import pdb
 
 def signup(request):
     if request.method == 'POST': 
@@ -34,3 +31,18 @@ def signin(request):
     else:
         form = AuthenticationForm()
     return render(request, 'users/login.html', {'form': form})
+
+@login_required
+def account(request):
+    return render(request, 'users/account.html', {'user': request.user})
+
+@login_required
+def edit(request):
+    if request.method == 'POST':
+        form = EditUserForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+    else:
+        form = EditUserForm(None, instance=request.user)
+    return render(request, 'users/edit.html', {'form': form})
