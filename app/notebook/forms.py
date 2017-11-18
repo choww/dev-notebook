@@ -18,3 +18,8 @@ class CreatePostForm(forms.Form):
                            body=body,
                            title=title)
         return post
+
+class EditPostForm(forms.ModelForm):
+    class Meta: 
+        model = Post
+        fields = ('title', 'body')
