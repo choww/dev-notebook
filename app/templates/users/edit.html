@@ -3,12 +3,16 @@
 
 {% block content %}
   <h1>Edit Account</h1>
+  <h2>Profile</h2>
   <form method="POST">
     {% csrf_token %}
     {% for field in form %}
       <div class="field"> 
         {{ field.label_tag }}
         <div class="control">{{ field }}
+        {% for err in field.errors %}
+          <div class="help is-danger">{{ err }}</div>
+        {% endfor %}
       </div>
     {% endfor %}
     <button type="submit" class="button is-primary">Submit</button> 

@@ -3,7 +3,6 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .forms import *
-import pdb
 
 def signup(request):
     if request.method == 'POST': 
@@ -32,9 +31,10 @@ def signin(request):
         form = AuthenticationForm()
     return render(request, 'users/login.html', {'form': form})
 
-@login_required
-def account(request):
-    return render(request, 'users/account.html', {'user': request.user})
+def account(request):   
+    if request.user.is_authenticated: 
+        return render(request, 'users/account.html', {'user': request.user})
+    return redirect('/login')
 
 @login_required
 def edit(request):
