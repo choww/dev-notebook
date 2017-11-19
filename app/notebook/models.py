@@ -2,7 +2,7 @@ from django.db import models
 from users.models import User
 
 class Category(models.Model):
-    name = models.CharField(max_length=255, default='')
+    name = models.CharField(max_length=255, default='', unique=True)
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
