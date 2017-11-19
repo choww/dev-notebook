@@ -7,5 +7,8 @@
     <div>{{ post.title }}</div>
     <div>{{ post.date }}</div>
     <div>{{ post.body }}</div>
+    {% for tag in post.tag_set.all %}
+      <span>{{ tag.category.name }}</span>
+    {% endfor %}
   {% endfor %}
 {% endblock %}

@@ -22,11 +22,12 @@ def index(request):
 @login_required
 def edit(request, id):
     post = get_object_or_404(Post, pk=id)
+    tags = [tag.category.name for tag in post.tag_set.all()]
+    form = EditPostForm(request.POST or None, 
+                        instance=post,
+                        initial={'categories': ','.join(tags) })
     if request.method == 'POST': 
-        form = EditPostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save()
             return redirect('/posts')
-    else: 
-        form = EditPostForm(None, instance=post)
     return render(request, 'notebook/edit.html', {'form': form})
