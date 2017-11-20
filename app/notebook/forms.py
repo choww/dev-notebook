@@ -30,7 +30,18 @@ class EditPostForm(forms.ModelForm):
     categories = forms.CharField(label='Tags (separate by commas)',
                                  widget=forms.TextInput(attrs={'class': 'input'}))
     
-
     class Meta: 
         model = Post
         fields = ('title', 'body', 'categories')
+
+    def save(self, post):
+        post.title = self.cleaned_data['title']
+        post.body = self.cleaned_data['body']
+        categories = self.cleaned_data['categories']
+        post.save()
+        for tag in categories.split(','):
+            category = Category.objects.get_or_create(name=tag.strip())[0]
+            Tag.objects.get_or_create(user=post.user, 
+                                      post=post,
+                                      category=category)
+        return post

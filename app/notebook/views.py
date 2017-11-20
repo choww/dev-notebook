@@ -28,6 +28,6 @@ def edit(request, id):
                         initial={'categories': ','.join(tags) })
     if request.method == 'POST': 
         if form.is_valid():
-            post = form.save()
+            form.save(post)
             return redirect('/posts')
     return render(request, 'notebook/edit.html', {'form': form})
