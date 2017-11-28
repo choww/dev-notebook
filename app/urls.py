@@ -13,7 +13,8 @@ urlpatterns = [
 
     url(r'^account/edit', user_views.edit, name='edit-account'),
     url(r'^account', user_views.account, name='account'),
-    url(r'^posts', notebook_views.index, name='all-posts'),
-    url(r'^new-post', notebook_views.create, name='new-post'),
-    url(r'^edit-post/(?P<id>\d+)/$', notebook_views.edit, name='edit-post')
+    url(r'^posts/new', notebook_views.create, name='new-post'),
+    url(r'^edit-post/(?P<id>\d+)/$', notebook_views.edit, name='edit-post'),
+    url(r'^posts/delete/(?P<id>\d+)/$', notebook_views.destroy, name='delete-post'),
+    url(r'^posts', notebook_views.index, name='all-posts')
 ]   

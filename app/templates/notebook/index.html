@@ -4,6 +4,7 @@
 {% block content %}
   {% for post in posts %}
     <div><a href="{% url 'edit-post' id=post.pk %}">Edit</a></div>
+    <div><a href="{% url 'delete-post' id=post.pk %}" class="is-danger">Delete</a>
     <div>{{ post.title }}</div>
     <div>{{ post.date }}</div>
     <div>{{ post.body }}</div>
