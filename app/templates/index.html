@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Dev Notebook{% endblock %}
+{% block title %}DevBook{% endblock %}
 
 {% block content %}
-  {% if request.user.is_authenticated %}
-    <div>hi {{ user.username }}</div>
-  {% else %}
-    <a href="/login">Login</a> 
-    <a href="/signup">Sign Up</a>
-  {% endif %}
+  <div class="hero-img hero is-large">
+  <div class="hero-body">
+    <div class="container has-text-centered">   
+      <h1 class="marker">DEVBOOK</h1>
+    </div>
+  </div>
+  </div>
 {% endblock %}
