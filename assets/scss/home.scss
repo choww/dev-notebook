@@ -1,2 +1,46 @@
-@import '../../node_modules/bulma/bulma.sass';
+@import 'bulma';
+@import url('https://fonts.googleapis.com/css?family=Bungee|Permanent+Marker');
 
+html, body {
+  height: 100%; 
+  margin: 0;
+  padding: 0; 
+}
+
+.hero-normal {
+  background: url(/assets/images/hero2.jpg) no-repeat center center fixed; 
+}
+
+.hero-landing {
+  background: url(/assets/images/hero3.jpg) no-repeat center center fixed;
+}
+
+.hero-normal,
+.hero-landing {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #fff; 
+  height: 100%; 
+
+  h1,h2 { font-family: 'Bungee'; }
+}
+
+h1 { font-size: $size-1; }
+h2 { font-size: $size-2; }
+h6 { font-size: $size-4; }
+
+.logo { 
+  font-family: 'Permanent Marker';
+  font-size: 2rem;
+}
+
+.is-seethru { 
+  opacity: 0.9;
+}
+
+.column:last-of-type { 
+  overflow-y: auto; 
+  max-height: 46rem;
+}
