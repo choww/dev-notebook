@@ -1,10 +1,20 @@
 from django import forms
 from django.contrib.auth import password_validation
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input'}))
+
 class SignupForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}))
+    email = forms.EmailField(required=True,
+                             widget=forms.TextInput(attrs={'class': 'input'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input'}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}))
 
     class Meta:
         model = User
@@ -22,10 +32,14 @@ class EditUserForm(forms.ModelForm):
         'password_mismatch': "The two password fields didn't match.",
     }
 
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(required=True,
+                             widget=forms.TextInput(attrs={'class': 'input'}))
+
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}))
     new_password1 = forms.CharField(
         label="New password",
-        widget=forms.PasswordInput,
+        widget=forms.PasswordInput(attrs={'class': 'input'}),
         required=False,
         strip=False,
         help_text=password_validation.password_validators_help_text_html(),
@@ -34,7 +48,7 @@ class EditUserForm(forms.ModelForm):
         label="New password confirmation",
         required=False,
         strip=False,
-        widget=forms.PasswordInput,
+        widget=forms.PasswordInput(attrs={'class': 'input'}),
     )
 
     class Meta:

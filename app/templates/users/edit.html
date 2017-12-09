@@ -1,9 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'columns.html' %}
 {% block title %} | Edit Account{% endblock %}
 
+{% block page_name %} Account Settings {% endblock %}
 {% block content %}
-  <h1>Edit Account</h1>
-  <h2>Profile</h2>
   <form method="POST">
     {% csrf_token %}
     {% for field in form %}

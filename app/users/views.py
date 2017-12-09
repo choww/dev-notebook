@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .forms import *
 
@@ -20,15 +19,15 @@ def signup(request):
 
 def signin(request):
     if request.method == 'POST':    
-        form = AuthenticationForm(data=request.POST) 
+        form = LoginForm(data=request.POST) 
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
             login(request, user)
-            return redirect('/account')
+            return redirect('/posts')
     else:
-        form = AuthenticationForm()
+        form = LoginForm()
     return render(request, 'users/login.html', {'form': form})
 
 def account(request):   

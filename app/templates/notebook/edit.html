@@ -1,8 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'columns.html' %}
 {% block title %} | Edit Post {% endblock %}
 
+{% block page_name %}Edit Post{% endblock %}
 {% block content %}
-  <h1>Edit Post</h1>
   <form method="POST">
     {% csrf_token %}
     <div class="field">
