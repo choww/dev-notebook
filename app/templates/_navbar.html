@@ -7,14 +7,12 @@
   <div class="navbar-menu">
     <div class="navbar-end">
       {% if request.user.is_authenticated %}
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">Posts</a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="{% url 'new-post' %}">New Post</a>
-            <a class="navbar-item" href="{% url 'all-posts' %}">Posts</a>
-          </div>
-        </div>
-        <a class="navbar-item" href="{% url 'edit-account' %}">Account</a>
+        <span class="navbar-item">
+          <a href="{% url 'new-post' %}" class="button is-primary">New Post</a>
+        </span>
+
+        <a class="navbar-item" href="{% url 'all-posts' %}">Posts</a>
+        <a class="navbar-item" href="{% url 'edit-account' %}">Profile</a>
         <a class="navbar-item" href="{% url 'logout' %}" method="DELETE">Logout</a>
       {% else %}
         <a class="navbar-item" href="/login">Login</a>

@@ -11,8 +11,12 @@ class SignupForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}))
     email = forms.EmailField(required=True,
                              widget=forms.TextInput(attrs={'class': 'input'}))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input'}))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input'}))
+    password1 = forms.CharField(required=True,
+                                label='Password', 
+                                widget=forms.PasswordInput(attrs={'class': 'input'}))
+    password2 = forms.CharField(required=True,
+                                label='Password confirmation',
+                                widget=forms.PasswordInput(attrs={'class': 'input'}))
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}))
 
