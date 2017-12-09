@@ -27,6 +27,10 @@ class CreatePostForm(forms.Form):
         return post
 
 class EditPostForm(forms.ModelForm):
+    title = forms.CharField(label='Title',
+                            widget=forms.TextInput(attrs={'class': 'input'}))
+    body = forms.CharField(label='Post', 
+                           widget=forms.Textarea(attrs={'class': 'textarea'}))
     categories = forms.CharField(label='Tags (separate by commas)',
                                  widget=forms.TextInput(attrs={'class': 'input'}))
     
