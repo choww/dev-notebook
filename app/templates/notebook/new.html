@@ -3,8 +3,10 @@
 
 {% block page_name %}New Post{% endblock %}
 {% block content %}
-  <form method="POST">
+  <form method="POST" class="post-form">
     {% csrf_token %}
+    <post-form></post-form>
+    <!--
     {% for field in form %}
       <div class="field">
         {{ field.label_tag }}
@@ -13,6 +15,8 @@
         </div>
       </div>
     {% endfor %}
+    <div>{{ tags }}</div>
+    -->
     <button type="submit" class="button is-primary">Submit</button>
   </form>
 {% endblock %}

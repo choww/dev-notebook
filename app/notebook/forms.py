@@ -8,7 +8,9 @@ class CreatePostForm(forms.Form):
     body = forms.CharField(label='Post', 
                            widget=forms.Textarea(attrs={'class': 'textarea'}))
     categories = forms.CharField(label='Tags (separate by commas)',
-                                 widget=forms.TextInput(attrs={'class': 'input'}))
+                                 widget=forms.TextInput(attrs={'class': 'input',    
+                                                               '@input': 'value => { tags = value }',
+                                                               ':value': 'tags'}))
     
     def save(self, request):
         title = self.cleaned_data['title']
@@ -32,7 +34,8 @@ class EditPostForm(forms.ModelForm):
     body = forms.CharField(label='Post', 
                            widget=forms.Textarea(attrs={'class': 'textarea'}))
     categories = forms.CharField(label='Tags (separate by commas)',
-                                 widget=forms.TextInput(attrs={'class': 'input'}))
+                                 widget=forms.TextInput(attrs={'class': 'input',
+                                                               'v-model': 'tags'}))
     
     class Meta: 
         model = Post
