@@ -5,18 +5,17 @@
 {% block content %}
   <form method="POST" class="post-form">
     {% csrf_token %}
-    <post-form></post-form>
-    <!--
-    {% for field in form %}
-      <div class="field">
-        {{ field.label_tag }}
-        <div class="control">
-          {{ field }}
-        </div>
-      </div>
-    {% endfor %}
-    <div>{{ tags }}</div>
-    -->
+    <div class="field">         
+      <label for="id_title">Title</label>
+      <input id="id_title" class="input" name="title" required type="text">
+    </div> 
+    <div class="field">
+      <label for="id_body">Post</label>
+      <textarea id="id_body" class="textarea" name="body" required>
+      </textarea>
+    </div>
+
+    <tag-form></tag-form>
     <button type="submit" class="button is-primary">Submit</button>
   </form>
 {% endblock %}

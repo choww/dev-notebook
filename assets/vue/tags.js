@@ -1,6 +1,6 @@
 var Vue = require('vue/dist/vue');
 
-Vue.component('post-form', {
+Vue.component('tag-form', {
   data: function() {
     return { tags: '' }
   },
@@ -19,27 +19,14 @@ Vue.component('post-form', {
   template: `
     <div>
       <div class="field">
-        <label>Title</label>
-        <div class="control">
-          <input class="input" type="text"></input>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Post</label>
-        <div class="control">
-          <textarea class="textarea"></textarea>
-        </div>
-      </div>
-      <div class="field">
-        <label>Tags</label>
+        <label for="id_categories">Tags</label>
         <div class="tags">
           <span :class="{'tag is-info': tag != ''}" v-for="tag in this.processedTags">
             {{ tag }}
           </span>
         </div>
         <div class="control">
-          <input type="text" class="input" v-model="tags"></input>
+          <input id="id_categories" name="categories" type="text" class="input" v-model="tags"></input>
         </div>
       </div>
     </div>`
