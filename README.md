@@ -5,6 +5,7 @@ Dev Notebook
 * Django 1.11.6
 * PostgreSQL 9.x
 * Gulp 3.9.1
+* Vue.js 2.x
 * Bulma
 
 # Set up
