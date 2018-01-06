@@ -27,7 +27,9 @@ html, body {
   h1,h2 { font-family: 'Bungee'; }
 }
 
-h1 { font-size: $size-1; }
+h1 { 
+  font-size: $size-1; 
+}
 h2 { font-size: $size-2; }
 h6 { font-size: $size-4; }
 
@@ -40,7 +42,8 @@ h6 { font-size: $size-4; }
   opacity: 0.9;
 }
 
-.column:last-of-type { 
-  overflow-y: auto; 
-  max-height: 46rem;
+main {  
+  background: $seethru-dark;
+  height: 50rem;
+  overflow-y: auto;
 }

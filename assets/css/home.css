@@ -1754,9 +1754,9 @@ a.box:active {
   position: relative;
   vertical-align: top;
   background-color: rgba(0, 0, 0, 0.4);
-  border-color: #dbdbdb;
+  border-color: #fff;
   color: #fff;
-  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  box-shadow: none;
   max-width: 100%;
   width: 100%; }
   .input:focus, .input.is-focused, .input:active, .input.is-active,
@@ -2006,7 +2006,7 @@ a.box:active {
     position: relative;
     vertical-align: top;
     background-color: rgba(0, 0, 0, 0.4);
-    border-color: #dbdbdb;
+    border-color: #fff;
     color: #fff;
     cursor: pointer;
     display: block;
@@ -3875,7 +3875,7 @@ a.dropdown-item {
   padding: 20px; }
 
 .navbar {
-  background-color: white;
+  background-color: transparent;
   min-height: 3.25rem;
   position: relative; }
   .navbar.is-white {
@@ -6176,6 +6176,7 @@ h6 {
 .is-seethru {
   opacity: 0.9; }
 
-.column:last-of-type {
-  overflow-y: auto;
-  max-height: 46rem; }
+main {
+  background: rgba(0, 0, 0, 0.4);
+  height: 50rem;
+  overflow-y: auto; }
