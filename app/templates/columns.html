@@ -4,26 +4,30 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css" href="/assets/css/home.css"/>
+    <script defer src="/assets/js/fontawesome-all.min.js"></script>
     <title>DevBook {% block title %}{% endblock %}</title>
   </head>
     
   <body>
-    <section class="hero-normal hero is-fullheight">
+    <header class="hero is-fullheight">
       {% include '_navbar.html' %}  
       <div class="hero-body">
-        <div class="container">
-          <div class="columns">
-            <div class="column is-5 has-text-right">
-              <h1>{% block page_name %}{% endblock %}</h1>
-            </div>
-            <main class="column is-7">
-              {% block content %}{% endblock %}
-            </main>
-          </div>
+        <div class="container has-text-centered">
+          <h1>{% block page_name %}{% endblock %}</h1>
         </div>
       </div>
-    </section>
+    </header>
+
+    <main class="hero is-fullheight">
+      <div class="hero-body">
+        <div class="container">
+        {% block content %}{% endblock %}
+        </div>
+      </div>
+    </main>
     
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="/assets/js/tags.js"></script>
+    <script type="text/javascript" src="/assets/js/scripts.js"></script>
   </body>
 </html>

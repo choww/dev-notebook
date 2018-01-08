@@ -5,17 +5,21 @@ html, body {
   height: 100%; 
   margin: 0;
   padding: 0; 
+  background: $beige;
 }
 
-.hero-normal {
-  background: url(/assets/images/hero2.jpg) no-repeat center center fixed; 
+header { 
+  background: url(/assets/images/hero-pencils.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .hero-landing {
   background: url(/assets/images/hero3.jpg) no-repeat center center fixed;
 }
 
-.hero-normal,
 .hero-landing {
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -24,8 +28,9 @@ html, body {
   color: #fff; 
   height: 100%; 
 
-  h1,h2 { font-family: 'Bungee'; }
 }
+
+h1,h2 { font-family: 'Bungee'; }
 
 h1 { 
   font-size: $size-1; 
@@ -38,12 +43,3 @@ h6 { font-size: $size-4; }
   font-size: 2rem;
 }
 
-.is-seethru { 
-  opacity: 0.9;
-}
-
-main {  
-  background: $seethru-dark;
-  height: 50rem;
-  overflow-y: auto;
-}

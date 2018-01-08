@@ -1,5 +1,6 @@
 $red: #E76062; 
 $blue: #08C9DA;
+$beige: #E8E6E9;
 $dark-grey: #444; 
 $seethru-white: rgba(255, 255, 255, 0.4);
 $seethru-dark: rgba(#000, 0.4);
@@ -8,8 +9,8 @@ $seethru-blue: rgba($blue, 0.5);
 $primary: $red;
 $info: $blue;
 
-$size-1: 7rem;
-$size-2: 6rem;
+$size-1: 6rem;
+$size-2:5rem;
 
 $navbar-background-color: transparent;
 $navbar-item-color: #fff; 
@@ -23,9 +24,9 @@ $navbar-dropdown-background-color: $seethru-blue;
 $navbar-dropdown-item-hover-color: #fff; 
 $navbar-dropdown-item-hover-background-color: $seethru-white; 
 
-$input-color: #fff; 
-$input-border-color: #fff;
-$input-background-color: $seethru-dark;
+$input-color: $dark-grey; 
+$input-border-color: $red;
+$input-background-color: transparent;
 $input-shadow: none;
 
 @import '../../node_modules/bulma/bulma.sass';
