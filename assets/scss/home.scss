@@ -16,6 +16,14 @@ header {
   background-size: cover;
 }
 
+
+.sticky { 
+  position: fixed;
+  width: 100%; 
+  background: $beige;
+  z-index: 1;
+}
+
 .hero-landing {
   background: url(/assets/images/hero3.jpg) no-repeat center center fixed;
 }
