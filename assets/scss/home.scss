@@ -20,6 +20,9 @@ header {
   background: url(/assets/images/hero3.jpg) no-repeat center center fixed;
 }
 
+.tag.is-info:nth-child(3n+2) { background: $green; }
+.tag.is-info:nth-child(3n+1) { background: $red; }
+
 .hero-landing {
   -webkit-background-size: cover;
   -moz-background-size: cover;
