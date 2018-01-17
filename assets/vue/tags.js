@@ -1,4 +1,5 @@
 var Vue = require('vue/dist/vue');
+var $ = require('jquery');
 
 Vue.component('tag-form', {
   props: ['currTags'],
@@ -31,6 +32,9 @@ Vue.component('tag-form', {
     </div>`
 });
 
-new Vue({
-  el: '.post-form'
-});
+
+if ($('.post-form').length > 0) {
+  new Vue({
+    el: '.post-form'
+  });
+}
