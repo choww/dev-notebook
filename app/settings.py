@@ -14,8 +14,8 @@ SITE_NAME = basename(BASE_DIR)
 SECRET_KEY = 'tz4=h9%f8xn&(nly47mwq_b@*5dypd@b@a99v(8*5szy4$4&p!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+DEBUG = False
+ALLOWED_HOSTS = ['devbase.herokuapp.com', 'localhost:8000']
 
 # Application definition
 
@@ -73,6 +73,8 @@ DATABASES = {
     }
 }
 
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -110,3 +112,5 @@ STATIC_URL = '/assets/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'assets'),
 ]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
