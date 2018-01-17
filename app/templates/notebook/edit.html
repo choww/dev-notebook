@@ -21,6 +21,12 @@
         <button type="submit" class="button is-info">Submit</button>
       </div>
     </div>
+
+    <div class="field">
+      <div class="control">
+        <a href="{% url 'delete-post' id=pk %}" class="button is-danger">Delete</a>
+      </div>
+    </div>
   </form>
 {% endblock %}
   

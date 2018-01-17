@@ -31,7 +31,7 @@ def edit(request, id):
         if form.is_valid():
             form.save(post)
             return redirect('/posts')
-    return render(request, 'notebook/edit.html', {'form': form})
+    return render(request, 'notebook/edit.html', {'form': form, 'pk': id})
 
 @login_required
 def destroy(request, id):

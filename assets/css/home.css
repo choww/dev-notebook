@@ -1,5 +1,5 @@
 /*! bulma.io v0.6.0 | MIT License | github.com/jgthms/bulma */
-@import url("https://fonts.googleapis.com/css?family=Bungee|Permanent+Marker");
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC|Permanent+Marker");
 @keyframes spinAround {
   from {
     transform: rotate(0deg); }
@@ -204,7 +204,7 @@ table th {
   top: 0; }
 
 .is-size-1 {
-  font-size: 6rem !important; }
+  font-size: 9rem !important; }
 
 .is-size-2 {
   font-size: 5rem !important; }
@@ -226,7 +226,7 @@ table th {
 
 @media screen and (max-width: 768px) {
   .is-size-1-mobile {
-    font-size: 6rem !important; }
+    font-size: 9rem !important; }
   .is-size-2-mobile {
     font-size: 5rem !important; }
   .is-size-3-mobile {
@@ -242,7 +242,7 @@ table th {
 
 @media screen and (min-width: 769px), print {
   .is-size-1-tablet {
-    font-size: 6rem !important; }
+    font-size: 9rem !important; }
   .is-size-2-tablet {
     font-size: 5rem !important; }
   .is-size-3-tablet {
@@ -258,7 +258,7 @@ table th {
 
 @media screen and (max-width: 1023px) {
   .is-size-1-touch {
-    font-size: 6rem !important; }
+    font-size: 9rem !important; }
   .is-size-2-touch {
     font-size: 5rem !important; }
   .is-size-3-touch {
@@ -274,7 +274,7 @@ table th {
 
 @media screen and (min-width: 1024px) {
   .is-size-1-desktop {
-    font-size: 6rem !important; }
+    font-size: 9rem !important; }
   .is-size-2-desktop {
     font-size: 5rem !important; }
   .is-size-3-desktop {
@@ -290,7 +290,7 @@ table th {
 
 @media screen and (min-width: 1216px) {
   .is-size-1-widescreen {
-    font-size: 6rem !important; }
+    font-size: 9rem !important; }
   .is-size-2-widescreen {
     font-size: 5rem !important; }
   .is-size-3-widescreen {
@@ -306,7 +306,7 @@ table th {
 
 @media screen and (min-width: 1408px) {
   .is-size-1-fullhd {
-    font-size: 6rem !important; }
+    font-size: 9rem !important; }
   .is-size-2-fullhd {
     font-size: 5rem !important; }
   .is-size-3-fullhd {
@@ -3115,7 +3115,7 @@ a.tag:hover {
   .title:not(.is-spaced) + .subtitle {
     margin-top: -1.5rem; }
   .title.is-1 {
-    font-size: 6rem; }
+    font-size: 9rem; }
   .title.is-2 {
     font-size: 5rem; }
   .title.is-3 {
@@ -3140,7 +3140,7 @@ a.tag:hover {
   .subtitle:not(.is-spaced) + .title {
     margin-top: -1.5rem; }
   .subtitle.is-1 {
-    font-size: 6rem; }
+    font-size: 9rem; }
   .subtitle.is-2 {
     font-size: 5rem; }
   .subtitle.is-3 {
@@ -6155,6 +6155,12 @@ header {
   background: #E8E6E9;
   z-index: 1;
   padding: 1.5rem; }
+  .sticky h1 {
+    font-size: 5rem;
+    -webkit-transition: font-size 1s;
+    -moz-transition: font-size 1s;
+    -o-transition: font-size 1s;
+    transition: font-size 1s; }
 
 .hero-landing {
   background: url(/assets/images/hero3.jpg) no-repeat center center fixed; }
@@ -6174,10 +6180,10 @@ header {
   height: 100%; }
 
 h1, h2 {
-  font-family: 'Bungee'; }
+  font-family: 'Amatic SC'; }
 
 h1 {
-  font-size: 6rem; }
+  font-size: 9rem; }
 
 h2 {
   font-size: 5rem; }

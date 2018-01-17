@@ -4,13 +4,14 @@
 {% block page_name %}Posts{% endblock %}
 {% block content %}
   {% for post in posts %}
-    <div><a href="{% url 'edit-post' id=post.pk %}">Edit</a></div>
-    <div><a href="{% url 'delete-post' id=post.pk %}" class="is-danger">Delete</a>
-    <div>{{ post.title }}</div>
-    <div>{{ post.date|date:"l F d Y H:i" }}</div>
-    <div>{{ post.body|safe|linebreaks }}</div>
-    {% for tag in post.tag_set.all %}
-      <span>{{ tag.category.name }}</span>
-    {% endfor %}
+    <section class="section">
+      <h2 class="title">{{ post.title }}</h2>
+      <div class="subtitle">{{ post.date|date:"l F d Y H:i" }}</div>
+      <div>{{ post.body|safe|linebreaks }}</div>
+      {% for tag in post.tag_set.all %}
+        <span class="tag is-info">{{ tag.category.name }}</span>
+      {% endfor %}  
+      <div><a href="{% url 'edit-post' id=post.pk %}">Edit</a></div>
+    </section>
   {% endfor %}
 {% endblock %}

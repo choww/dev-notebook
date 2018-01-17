@@ -1,5 +1,5 @@
 @import 'bulma';
-@import url('https://fonts.googleapis.com/css?family=Bungee|Permanent+Marker');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Permanent+Marker');
 
 html, body {
   height: 100%; 
@@ -23,6 +23,13 @@ header {
   background: $beige;
   z-index: 1;
   padding: 1.5rem;
+  h1 { 
+    font-size: $size-2; 
+    -webkit-transition: font-size 1s;
+    -moz-transition: font-size 1s;
+    -o-transition: font-size 1s;
+    transition: font-size 1s; 
+  }
 }
 
 .hero-landing {
@@ -42,11 +49,9 @@ header {
 
 }
 
-h1,h2 { font-family: 'Bungee'; }
+h1,h2{ font-family: 'Amatic SC'; }
 
-h1 { 
-  font-size: $size-1; 
-}
+h1 { font-size: $size-1; }
 h2 { font-size: $size-2; }
 h6 { font-size: $size-4; }
 
