@@ -1,5 +1,5 @@
 /*! bulma.io v0.6.0 | MIT License | github.com/jgthms/bulma */
-@import url("https://fonts.googleapis.com/css?family=Amatic+SC|Permanent+Marker");
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC|Abel");
 @keyframes spinAround {
   from {
     transform: rotate(0deg); }
@@ -134,7 +134,7 @@ code {
   padding: 0.25em 0.5em 0.25em; }
 
 hr {
-  background-color: #dbdbdb;
+  background-color: #c4b5b2;
   border: none;
   display: block;
   height: 1px;
@@ -6142,6 +6142,10 @@ html, body {
   padding: 0;
   background: #E8E6E9; }
 
+body {
+  font-family: 'Abel';
+  font-size: 1.15rem; }
+
 header {
   background: url(/assets/images/hero-pencils.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -6165,12 +6169,6 @@ header {
 .hero-landing {
   background: url(/assets/images/hero3.jpg) no-repeat center center fixed; }
 
-.tag.is-info:nth-child(3n+2) {
-  background: #7CB20A; }
-
-.tag.is-info:nth-child(3n+1) {
-  background: #E76062; }
-
 .hero-landing {
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -6192,5 +6190,18 @@ h6 {
   font-size: 1.5rem; }
 
 .logo {
-  font-family: 'Permanent Marker';
-  font-size: 2rem; }
+  font-family: 'Amatic SC';
+  font-size: 2rem;
+  font-weight: bold; }
+
+.tags span:first-child {
+  margin: auto 0.5rem 0.5rem 0; }
+
+.tags .tag.is-info:nth-child(3n+2) {
+  background: #7CB20A; }
+
+.tags .tag.is-info:nth-child(3n+1) {
+  background: #E76062; }
+
+section .subtitle {
+  color: #8c706b; }

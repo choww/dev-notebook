@@ -29,4 +29,6 @@ $input-border-color: $brown;
 $input-background-color: transparent;
 $input-shadow: none;
 
+$hr-background-color: lighten($brown, 25%);
+
 @import '../../node_modules/bulma/bulma.sass';

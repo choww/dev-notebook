@@ -1,11 +1,16 @@
 @import 'bulma';
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Permanent+Marker');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Abel');
 
 html, body {
   height: 100%; 
   margin: 0;
   padding: 0; 
   background: $beige;
+}
+
+body { 
+  font-family: 'Abel';
+  font-size: 1.15rem;
 }
 
 header { 
@@ -36,9 +41,6 @@ header {
   background: url(/assets/images/hero3.jpg) no-repeat center center fixed;
 }
 
-.tag.is-info:nth-child(3n+2) { background: $green; }
-.tag.is-info:nth-child(3n+1) { background: $red; }
-
 .hero-landing {
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -49,14 +51,25 @@ header {
 
 }
 
-h1,h2{ font-family: 'Amatic SC'; }
+h1,h2 { font-family: 'Amatic SC'; }
 
 h1 { font-size: $size-1; }
 h2 { font-size: $size-2; }
 h6 { font-size: $size-4; }
 
 .logo { 
-  font-family: 'Permanent Marker';
+  font-family: 'Amatic SC';
   font-size: 2rem;
+  font-weight: bold;
 }
 
+// TAGS
+.tags { 
+  span:first-child { margin: auto 0.5rem 0.5rem 0; }
+  .tag.is-info:nth-child(3n+2) { background: $green; }
+  .tag.is-info:nth-child(3n+1) { background: $red; }
+}
+
+section {
+  .subtitle { color: $brown }
+}
