@@ -14,8 +14,8 @@ SITE_NAME = basename(BASE_DIR)
 SECRET_KEY = 'tz4=h9%f8xn&(nly47mwq_b@*5dypd@b@a99v(8*5szy4$4&p!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['devbase.herokuapp.com', 'localhost:8000']
+DEBUG = True
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -73,8 +73,8 @@ DATABASES = {
     }
 }
 
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
+#import dj_database_url
+#DATABASES['default'] = dj_database_url.config('postgres://cgkkmjiadytmvf:3e38a3a2701e87fc45c0e6c6652ccbcaeb043178ffe7988cafbb198f719e7f18@ec2-23-23-110-26.compute-1.amazonaws.com:5432/d7sspbir322cvt')
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -110,7 +110,7 @@ USE_TZ = True
 
 STATIC_URL = '/assets/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'assets'),
+    os.path.join(BASE_DIR, 'app/assets'),
 ]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
