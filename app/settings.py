@@ -1,6 +1,6 @@
 import os
 from os.path import abspath, dirname, basename, join
-import secrets as secrets
+import secrets
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = dirname(dirname(abspath(__file__)))
