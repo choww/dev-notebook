@@ -1,1 +1,1 @@
-web: cd app && gunicorn wsgi:application
+web: source env/bin/activate && cd app && gunicorn wsgi:application
