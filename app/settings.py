@@ -10,12 +10,12 @@ SITE_NAME = basename(BASE_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'tz4=h9%f8xn&(nly47mwq_b@*5dypd@b@a99v(8*5szy4$4&p!'
+SECRET_KEY = os.environ.get('DJ_SECRET_KEY', 'tz4=h9%f8xn&(nly47mwq_b@*5dypd@b@a99v(8*5szy4$4&p!')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['*']
+DEBUG = os.environ.get('DJ_SECRET_KEY', True)
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'devbase.herokuapp.com']
+X_FRAME_OPTIONS = 'DENY'
+SECURE_SSL_REDIRECT = False
 
 # Application definition
 
@@ -66,8 +66,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dev_notebook',
-        'USER': secrets.db_user,
-        'PASSWORD': secrets.db_pw,
+        'USER': os.environ.get('DB_USER', secrets.db_user),
+        'PASSWORD': os.environ.get('DB_PW', secrets.db_pw),
         'HOST': 'localhost',
         'PORT': ''
     }
