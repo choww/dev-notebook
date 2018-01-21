@@ -61,8 +61,10 @@ WSGI_APPLICATION = 'wsgi.application'
 
 
 # Database
-DATABASES = {
-    'default': {
+DATABASES = { 'default': {} }
+
+if DEBUG:
+ DATABASES['default'] = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dev_notebook',
         'USER': os.environ['DB_USER'],
@@ -70,10 +72,12 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': ''
     }
-}
 
-import dj_database_url
-DATABASES['default'] = dj_database_url.config('postgres://cgkkmjiadytmvf:3e38a3a2701e87fc45c0e6c6652ccbcaeb043178ffe7988cafbb198f719e7f18@ec2-23-23-110-26.compute-1.amazonaws.com:5432/d7sspbir322cvt')
+    
+else:
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config()
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
