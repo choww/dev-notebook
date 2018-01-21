@@ -1,5 +1,6 @@
 import os
 from os.path import abspath, dirname, basename, join
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = dirname(dirname(abspath(__file__)))
@@ -11,7 +12,7 @@ SITE_NAME = basename(BASE_DIR)
 
 SECRET_KEY = os.environ.get('DJ_SECRET_KEY', 'tz4=h9%f8xn&(nly47mwq_b@*5dypd@b@a99v(8*5szy4$4&p!')
 
-DEBUG = os.environ.get('DJ_SECRET_KEY', True)
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'devbase.herokuapp.com']
 X_FRAME_OPTIONS = 'DENY'
 SECURE_SSL_REDIRECT = False
@@ -59,7 +60,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wsgi.application'
 
-
 # Database
 DATABASES = { 'default': {} }
 
@@ -72,10 +72,7 @@ if DEBUG:
         'HOST': 'localhost',
         'PORT': ''
     }
-
-    
 else:
-    import dj_database_url
     DATABASES['default'] = dj_database_url.config()
 
 
