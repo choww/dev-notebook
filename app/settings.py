@@ -1,6 +1,5 @@
 import os
 from os.path import abspath, dirname, basename, join
-import secrets
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = dirname(dirname(abspath(__file__)))
@@ -66,8 +65,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dev_notebook',
-        'USER': os.environ.get('DB_USER', secrets.db_user),
-        'PASSWORD': os.environ.get('DB_PW', secrets.db_pw),
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PW'],
         'HOST': 'localhost',
         'PORT': ''
     }
