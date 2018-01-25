@@ -1,0 +1,26 @@
+{% extends 'columns.html' %}
+{% block title %} | Account{% endblock %}
+
+{% block page_name %} {{ user.username }} {% endblock %}
+{% block content %}
+  <div class="columns">
+    <div class="column is-1">Name</div>
+    <div class="column">{{ user.first_name }} {{user.last_name }}</div>
+  </div>  
+  <div class="columns">
+    <div class="column is-1">Email</div>
+    <div class="column">{{ user.email }}</div>
+  </div>
+  <div class="columns">
+    <div class="column is-1">Location</div>
+    <div class="column">{{ user.profile.location }}</div>
+  </div>
+  <div class="columns">
+    <div class="column">{{ user.profile.bio }}</div>
+  </div>
+  <div class="columns">
+    <div class="column">
+      <a href="{% url 'edit-account' %}" class="button is-primary">Edit</a>
+    </div>
+  </div>
+{% endblock %}

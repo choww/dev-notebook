@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from .forms import *
 
 def signup(request):
@@ -12,7 +13,7 @@ def signup(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('/')
+            return redirect('/account')
     else:
         form = SignupForm()
     return render(request, 'users/signup.html', {'form': form})
@@ -25,23 +26,31 @@ def signin(request):
             password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
             login(request, user)
-            return redirect('/posts')
+            return redirect('/dashboard')
     else:
         form = LoginForm()
     return render(request, 'users/login.html', {'form': form})
 
-def account(request):   
+def dashboard(request):   
     if request.user.is_authenticated: 
-        return render(request, 'users/account.html', {'user': request.user})
+        return render(request, 'users/dashboard.html', {'user': request.user})
     return redirect('/login')
 
 @login_required
+def show(request):
+    return render(request, 'users/show.html', {'user': request.user})
+
+@login_required
+@transaction.atomic
 def edit(request):
     if request.method == 'POST':
         form = EditUserForm(request.POST, instance=request.user)
-        if form.is_valid():
+        profile = ProfileForm(request.POST, instance=request.user)
+        if form.is_valid() and profile.is_valid():
             form.save()
-            return redirect('/')
+            profile.save(request.user)
+            return redirect('/account')
     else:
         form = EditUserForm(None, instance=request.user)
-    return render(request, 'users/edit.html', {'form': form})
+        profile = ProfileForm(None, instance=request.user.profile)
+    return render(request, 'users/edit.html', {'form': form, 'profile_form': profile })

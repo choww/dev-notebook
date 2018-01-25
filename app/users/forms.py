@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth import password_validation
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from .models import Profile
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}))
@@ -80,3 +81,19 @@ class EditUserForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+class ProfileForm(forms.ModelForm):
+    bio = forms.CharField(label='Bio', 
+                          required=False,
+                          widget=forms.Textarea(attrs={'class': 'textarea'}))    
+    location = forms.CharField(label='Location',
+                               required=False,
+                               widget=forms.TextInput(attrs={'class': 'input'}))
+    class Meta: 
+        model = Profile
+        fields = ('bio', 'location')
+    
+    def save(self, user):
+        user.profile.bio=self.cleaned_data['bio']
+        user.profile.location=self.cleaned_data['location']
+        user.profile.save()

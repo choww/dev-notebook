@@ -17,6 +17,18 @@
       </div>
     {% endfor %}
 
+    {% for field in profile_form %}
+      <div class="field">
+        {{ field.label_tag }}
+        <div class="control">
+          {{ field }}
+          {% for err in field.errors %}
+            <div class="help is-danger">{{ err }}</div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+
     <div class="field">
       <div class="control">
         <button type="submit" class="button is-info">Submit</button> 

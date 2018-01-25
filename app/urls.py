@@ -11,8 +11,9 @@ urlpatterns = [
     url(r'^signup', user_views.signup, name='signup'),
     url(r'^logout', auth_views.logout, {'next_page': '/'}, name='logout'),
 
+    url(r'^dashboard', user_views.dashboard, name='dashboard'),
     url(r'^account/edit', user_views.edit, name='edit-account'),
-    url(r'^account', user_views.account, name='account'),
+    url(r'^account', user_views.show, name='account'),
     url(r'^posts/new', notebook_views.create, name='new-post'),
     url(r'^edit-post/(?P<id>\d+)/$', notebook_views.edit, name='edit-post'),
     url(r'^posts/delete/(?P<id>\d+)/$', notebook_views.destroy, name='delete-post'),

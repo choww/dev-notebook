@@ -13,6 +13,9 @@
           <div class="field">
             {{ field.label_tag }}
             <div class="control">{{ field }}</div>
+            {% for err in field.errors %}
+              <div class="help is-danger">{{ err }}</div>
+            {% endfor %}
           </div>
         {% endfor %}
         <div class="field"> 
