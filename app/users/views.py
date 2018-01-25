@@ -12,7 +12,7 @@ def signup(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('/account')
+            return redirect('/')
     else:
         form = SignupForm()
     return render(request, 'users/signup.html', {'form': form})
@@ -41,7 +41,7 @@ def edit(request):
         form = EditUserForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('/account')
+            return redirect('/')
     else:
         form = EditUserForm(None, instance=request.user)
     return render(request, 'users/edit.html', {'form': form})
