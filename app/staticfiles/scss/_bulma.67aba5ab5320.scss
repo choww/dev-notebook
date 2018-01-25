@@ -1,0 +1,34 @@
+$red: #E76062; 
+$blue: #009FE6;
+$beige: #E8E6E9;
+$dark-grey: #444; 
+$green: #7CB20A;
+$brown: #8c706b;
+$seethru-white: rgba(255, 255, 255, 0.4);
+
+$primary: $red;
+$info: $blue;
+
+$size-1: 9rem;
+$size-2: 5rem;
+
+$navbar-background-color: transparent;
+$navbar-item-color: $brown; 
+$navbar-item-hover-background-color: $brown;
+$navbar-item-hover-color: #fff; 
+
+$navbar-item-active-color: #fff; 
+$navbar-item-active-background-color: $red;
+
+$navbar-dropdown-arrow: $blue; 
+$navbar-dropdown-item-hover-color: #fff; 
+$navbar-dropdown-item-hover-background-color: $seethru-white; 
+
+$input-color: $brown; 
+$input-border-color: $brown;
+$input-background-color: transparent;
+$input-shadow: none;
+
+$hr-background-color: lighten($brown, 25%);
+
+@import '../../node_modules/bulma/bulma.sass';
