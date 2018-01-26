@@ -11,7 +11,7 @@
           <a href="{% url 'new-post' %}" class="button is-primary">New Post</a>
         </span>
 
-        <a class="navbar-item" href="{% url 'all-posts' %}">Posts</a>
+        <a class="navbar-item" href="{% url 'all-posts' username=request.user.username %}">Posts</a>
         <a class="navbar-item" href="{% url 'account' %}">Profile</a>
         <a class="navbar-item" href="{% url 'logout' %}" method="DELETE">Logout</a>
       {% else %}
