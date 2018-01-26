@@ -14,11 +14,11 @@ def create(request):
         form = CreatePostForm()
     return render(request, 'notebook/new.html', {'form': form}) 
 
-@login_required
-def index(request):
+def index(request, username):
+    user = User.objects.get(username=username)
     return render(request, 
                   'notebook/index.html', 
-                  {'posts': request.user.post_set.all()})
+                  {'posts': user.post_set.all()})
 
 @login_required
 def edit(request, id):
