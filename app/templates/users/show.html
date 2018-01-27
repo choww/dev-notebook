@@ -3,7 +3,7 @@
 
 {% block page_name %} {{ user.username }} {% endblock %}
 {% block content %}
-  {{ user.photo.url }}
+  <img src="{{ user.profile.photo.url }}">
   <div class="columns">
     <div class="column is-1">Name</div>
     <div class="column">{{ user.first_name }} {{user.last_name }}</div>

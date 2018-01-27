@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
+from PIL import Image
 from .forms import *
 
 def signup(request):
@@ -38,6 +39,7 @@ def dashboard(request):
 
 @login_required
 def show(request):
+    #photo = get_object_or_404(Image, photo=request.user.profile.photo) 
     return render(request, 'users/show.html', {'user': request.user})
 
 @login_required
