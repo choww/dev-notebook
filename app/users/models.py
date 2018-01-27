@@ -10,7 +10,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     location = models.CharField(max_length=60, default='')
     bio = models.TextField(default='')
-    photo = models.ImageField(upload_to=user_photos,blank=True)
+    photo = models.ImageField(upload_to=user_photos,
+                              blank=True,
+                              default='/assets/images/user.svg')
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

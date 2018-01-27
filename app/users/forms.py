@@ -38,7 +38,7 @@ class EditUserForm(forms.ModelForm):
     }
 
     email = forms.EmailField(required=True,
-                             widget=forms.TextInput(attrs={'class': 'input'}))
+                             widget=forms.EmailInput(attrs={'class': 'input'}))
 
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}))
