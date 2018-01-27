@@ -89,11 +89,14 @@ class ProfileForm(forms.ModelForm):
     location = forms.CharField(label='Location',
                                required=False,
                                widget=forms.TextInput(attrs={'class': 'input'}))
+    photo = forms.ImageField(required=False)
+
     class Meta: 
         model = Profile
-        fields = ('bio', 'location')
+        fields = ('bio', 'location', 'photo')
     
     def save(self, user):
         user.profile.bio=self.cleaned_data['bio']
         user.profile.location=self.cleaned_data['location']
+        user.profile.photo=self.cleaned_data['photo']
         user.profile.save()
