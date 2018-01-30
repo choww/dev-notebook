@@ -17,5 +17,7 @@ urlpatterns = [
     url(r'^posts/new', notebook_views.create, name='new-post'),
     url(r'^edit-post/(?P<id>\d+)/$', notebook_views.edit, name='edit-post'),
     url(r'^posts/delete/(?P<id>\d+)/$', notebook_views.destroy, name='delete-post'),
-    url(r'^(?P<username>\w+)/$', notebook_views.index, name='all-posts')
+    url(r'^(?P<username>\w+)/$', notebook_views.index, name='all-posts'),
+
+    url(r'^tinymce/', include('tinymce.urls'))
 ]   

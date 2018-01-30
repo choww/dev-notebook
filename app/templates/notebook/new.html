@@ -9,13 +9,28 @@
       <label for="id_title">Title</label>
       <input id="id_title" class="input" name="title" required type="text">
     </div> 
-    <div class="field">
-      <label for="id_body">Post</label>
-      <textarea id="id_body" class="textarea" name="body" required>
-      </textarea>
+    <div class="field" id="wysiwyg">
+      <label for="id_body">Post</label> 
+        <!--<textarea id="id_body" class="textarea" name="body" required>
+        </textarea> -->
     </div>
 
-    <tag-form></tag-form>
+    <editor inline-template="true">
+      <textarea></textarea>
+    </editor> 
+    <tag-form>
+      <div class="field">
+        <label for="id_categories">Tags</label>
+        <div class="tags">
+          <span :class="{'tag is-info': tag != ''}" v-for="tag in this.processedTags">
+            {{ tag }}
+          </span>
+        </div>
+        <div class="control">
+          <input id="id_categories" name="categories" type="text" class="input" v-model="tags"></input>
+        </div>
+      </div>
+    </tag-form>
 
     <div class="field"> 
       <div class="control">
@@ -23,4 +38,6 @@
       </div>
     </div>
   </form>
+
 {% endblock %}
+

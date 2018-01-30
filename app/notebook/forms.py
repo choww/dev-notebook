@@ -1,12 +1,13 @@
 from django import forms
 from datetime import datetime
+from tinymce.widgets import TinyMCE
 from .models import *
 
 class CreatePostForm(forms.Form):
     title = forms.CharField(label='Title',
                             widget=forms.TextInput(attrs={'class': 'input'}))
     body = forms.CharField(label='Post', 
-                           widget=forms.Textarea(attrs={'class': 'textarea'}))
+                           widget=TinyMCE(attrs={'class': 'textarea'}))
     categories = forms.CharField(label='Tags (separate by commas)',
                                  widget=forms.TextInput(attrs={'class': 'input',    
                                                                '@input': 'value => { tags = value }',

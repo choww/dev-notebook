@@ -1,5 +1,20 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var Vue = require('vue/dist/vue');
+var Editor = require('@tinymce/tinymce-vue');
+var tags = require('./tags.js');
+
+//Vue.component('wysiwyg-editor', {});
+
+new Vue({
+  el: '.post-form', 
+  components: { 
+    'editor': Editor,
+    'tag-form': tags
+  }
+});
+
+},{"./tags.js":2,"@tinymce/tinymce-vue":8,"vue/dist/vue":10}],2:[function(require,module,exports){
+var Vue = require('vue/dist/vue');
 var $ = require('jquery');
 
 //Vue.component('tag-form', 
@@ -20,7 +35,319 @@ var tags = { props: ['currTags'],
 //  });
 //}
 
-},{"jquery":2,"vue/dist/vue":3}],2:[function(require,module,exports){
+},{"jquery":9,"vue/dist/vue":10}],3:[function(require,module,exports){
+"use strict";
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var Utils_1 = require("./Utils");
+var injectScriptTag = function (scriptId, doc, url, callback) {
+    var scriptTag = doc.createElement('script');
+    scriptTag.type = 'application/javascript';
+    scriptTag.id = scriptId;
+    scriptTag.addEventListener('load', callback);
+    scriptTag.src = url;
+    doc.head.appendChild(scriptTag);
+};
+exports.create = function () {
+    return {
+        listeners: [],
+        scriptId: Utils_1.uuid('tiny-script'),
+        scriptLoaded: false
+    };
+};
+exports.load = function (state, doc, url, callback) {
+    if (state.scriptLoaded) {
+        callback();
+    }
+    else {
+        state.listeners.push(callback);
+        if (!doc.getElementById(state.scriptId)) {
+            injectScriptTag(state.scriptId, doc, url, function () {
+                state.listeners.forEach(function (fn) { return fn(); });
+                state.scriptLoaded = true;
+            });
+        }
+    }
+};
+
+},{"./Utils":5}],4:[function(require,module,exports){
+(function (global){
+"use strict";
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var getGlobal = function () { return typeof window !== 'undefined' ? window : global; };
+var getTinymce = function () {
+    var global = getGlobal();
+    return global && global.tinymce ? global.tinymce : null;
+};
+exports.getTinymce = getTinymce;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],5:[function(require,module,exports){
+"use strict";
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var validEvents = [
+    'onActivate',
+    'onAddUndo',
+    'onBeforeAddUndo',
+    'onBeforeExecCommand',
+    'onBeforeGetContent',
+    'onBeforeRenderUI',
+    'onBeforeSetContent',
+    'onBeforePaste',
+    'onBlur',
+    'onChange',
+    'onClearUndos',
+    'onClick',
+    'onContextMenu',
+    'onCopy',
+    'onCut',
+    'onDblclick',
+    'onDeactivate',
+    'onDirty',
+    'onDrag',
+    'onDragDrop',
+    'onDragEnd',
+    'onDragGesture',
+    'onDragOver',
+    'onDrop',
+    'onExecCommand',
+    'onFocus',
+    'onFocusIn',
+    'onFocusOut',
+    'onGetContent',
+    'onHide',
+    'onInit',
+    'onKeyDown',
+    'onKeyPress',
+    'onKeyUp',
+    'onLoadContent',
+    'onMouseDown',
+    'onMouseEnter',
+    'onMouseLeave',
+    'onMouseMove',
+    'onMouseOut',
+    'onMouseOver',
+    'onMouseUp',
+    'onNodeChange',
+    'onObjectResizeStart',
+    'onObjectResized',
+    'onObjectSelected',
+    'onPaste',
+    'onPostProcess',
+    'onPostRender',
+    'onPreInit',
+    'onPreProcess',
+    'onProgressState',
+    'onRedo',
+    'onRemove',
+    'onReset',
+    'onSaveContent',
+    'onSelectionChange',
+    'onSetAttrib',
+    'onSetContent',
+    'onShow',
+    'onSubmit',
+    'onUndo',
+    'onVisualAid'
+];
+var isValidKey = function (key) { return validEvents.indexOf(key) !== -1; };
+exports.bindHandlers = function (listeners, editor) {
+    Object.keys(listeners)
+        .filter(isValidKey)
+        .forEach(function (key) {
+        var handler = listeners[key];
+        if (typeof handler === 'function') {
+            editor.on(key.substring(2), function (e) { return handler(e, editor); });
+        }
+    });
+};
+exports.bindModelHandlers = function (ctx, editor) {
+    var modelEvents = ctx.$props.modelEvents ? ctx.$props.modelEvents : null;
+    var normalizedEvents = Array.isArray(modelEvents) ? modelEvents.join(' ') : modelEvents;
+    var currentContent;
+    ctx.$watch('value', function (val, prevVal) {
+        if (editor && typeof val === 'string' && val !== currentContent && val !== prevVal) {
+            editor.setContent(val);
+        }
+    });
+    editor.on(normalizedEvents ? normalizedEvents : 'change keyup', function () {
+        currentContent = editor.getContent();
+        ctx.$emit('input', currentContent);
+    });
+};
+var unique = 0;
+exports.uuid = function (prefix) {
+    var date = new Date();
+    var time = date.getTime();
+    var random = Math.floor(Math.random() * 1000000000);
+    unique++;
+    return prefix + '_' + random + unique + String(time);
+};
+exports.isTextarea = function (element) {
+    return element !== null && element.tagName.toLowerCase() === 'textarea';
+};
+var normalizePluginArray = function (plugins) {
+    if (typeof plugins === 'undefined' || plugins === '') {
+        return [];
+    }
+    return Array.isArray(plugins) ? plugins : plugins.split(' ');
+};
+exports.mergePlugins = function (initPlugins, inputPlugins) {
+    return normalizePluginArray(initPlugins).concat(normalizePluginArray(inputPlugins));
+};
+
+},{}],6:[function(require,module,exports){
+"use strict";
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var ScriptLoader = require("../ScriptLoader");
+var TinyMCE_1 = require("../TinyMCE");
+var Utils_1 = require("../Utils");
+var EditorPropTypes_1 = require("./EditorPropTypes");
+var scriptState = ScriptLoader.create();
+var renderInline = function (h, id, tagName) {
+    return h(tagName ? tagName : 'div', {
+        attrs: { id: id }
+    });
+};
+var renderIframe = function (h, id) {
+    return h('textarea', {
+        attrs: { id: id },
+        style: { visibility: 'hidden' }
+    });
+};
+var initialise = function (ctx) { return function () {
+    var initialValue = ctx.$props.initialValue ? ctx.$props.initialValue : '';
+    var value = ctx.$props.value ? ctx.$props.value : '';
+    var finalInit = __assign({}, ctx.$props.init, { selector: "#" + ctx.elementId, plugins: Utils_1.mergePlugins(ctx.$props.init && ctx.$props.init.plugins, ctx.$props.plugins), toolbar: ctx.$props.toolbar || (ctx.$props.init && ctx.$props.init.toolbar), inline: ctx.$props.inline, setup: function (editor) {
+            ctx.editor = editor;
+            editor.on('init', function () { return editor.setContent(initialValue || value); });
+            // checks if the v-model shorthand is used (which sets an v-on:input listener) and then binds either
+            // specified the events or defaults to "change keyup" event and emits the editor content on that event
+            if (ctx.$listeners.input) {
+                Utils_1.bindModelHandlers(ctx, editor);
+            }
+            Utils_1.bindHandlers(ctx.$listeners, editor);
+            if (ctx.$props.init && typeof ctx.$props.init.setup === 'function') {
+                ctx.$props.init.setup(editor);
+            }
+        } });
+    if (Utils_1.isTextarea(ctx.element)) {
+        ctx.element.style.visibility = '';
+    }
+    TinyMCE_1.getTinymce().init(finalInit);
+}; };
+exports.Editor = {
+    props: EditorPropTypes_1.editorProps,
+    created: function () {
+        this.elementId = this.$props.id || Utils_1.uuid('tiny-vue');
+    },
+    mounted: function () {
+        this.element = this.$el;
+        if (TinyMCE_1.getTinymce() !== null) {
+            initialise(this)();
+        }
+        else if (this.element) {
+            var doc = this.element.ownerDocument;
+            var channel = this.$props.cloudChannel ? this.$props.cloudChannel : 'stable';
+            var apiKey = this.$props.apiKey ? this.$props.apiKey : '';
+            var url = "https://cloud.tinymce.com/" + channel + "/tinymce.min.js?apiKey=" + apiKey;
+            ScriptLoader.load(scriptState, doc, url, initialise(this));
+        }
+    },
+    beforeDestroy: function () {
+        TinyMCE_1.getTinymce().remove(this.editor);
+    },
+    render: function (h) {
+        var _a = this.$props, inline = _a.inline, tagName = _a.tagName;
+        return inline ? renderInline(h, this.elementId, tagName) : renderIframe(h, this.elementId);
+    }
+};
+
+},{"../ScriptLoader":3,"../TinyMCE":4,"../Utils":5,"./EditorPropTypes":7}],7:[function(require,module,exports){
+"use strict";
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.editorProps = {
+    apiKey: String,
+    cloudChannel: {
+        validator: function (val) {
+            var validChannels = ['stable', 'testing', 'dev'];
+            if (validChannels.indexOf(val.toLowerCase()) !== -1) {
+                return true;
+            }
+            else {
+                // tslint:disable-next-line:no-console
+                console.error("VALIDATION ERROR! cloudChannel should be one of: " + validChannels.join(', '));
+                return false;
+            }
+        }
+    },
+    id: String,
+    init: Object,
+    initialValue: String,
+    inline: Boolean,
+    modelEvents: [String, Array],
+    plugins: [String, Array],
+    tagName: String,
+    toolbar: [String, Array],
+    value: String
+};
+
+},{}],8:[function(require,module,exports){
+"use strict";
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var Editor_1 = require("./components/Editor");
+exports.default = Editor_1.Editor;
+
+},{"./components/Editor":6}],9:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
@@ -10275,7 +10602,7 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{}],3:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 (function (global){
 /*!
  * Vue.js v2.5.9
