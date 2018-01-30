@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import *
-import pdb
 
 @login_required
 def create(request):
@@ -9,7 +8,7 @@ def create(request):
         form = CreatePostForm(request.POST)
         if form.is_valid():
             form.save(request)
-            return redirect('/posts')
+            return redirect('/'+request.user.username)
     else: 
         form = CreatePostForm()
     return render(request, 'notebook/new.html', {'form': form}) 
@@ -30,11 +29,11 @@ def edit(request, id):
     if request.method == 'POST': 
         if form.is_valid():
             form.save(post)
-            return redirect('/posts')
+            return redirect('/'+request.user.username)
     return render(request, 'notebook/edit.html', {'form': form, 'pk': id})
 
 @login_required
 def destroy(request, id):
     post = get_object_or_404(Post, pk=id)
     post.delete()
-    return redirect('/posts')
+    return redirect('/'+request.user.username)

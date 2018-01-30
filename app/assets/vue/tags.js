@@ -11,13 +11,6 @@ Vue.component('tag-form', {
       return this.tags.split(',').map(function(tag) { return tag.trim() });
     }
   },
-  methods: {
-    addTag: function(event) { 
-      if (event.key == ',') {
-        
-      }
-    }
-  },
   template: `
     <div class="field">
       <label for="id_categories">Tags</label>

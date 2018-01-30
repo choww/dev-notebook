@@ -11,9 +11,11 @@
           <div class="subtitle">{{ post.date|date:"l F d Y H:i" }}</div>
         </div>
         <div class="column has-text-right">
-          <a href="{% url 'edit-post' id=post.pk %}">
-            <span class="icon"><i class="fa fa-laptop"></i></span> Edit
-          </a>
+          {% if request.user.is_authenticated and request.user == post.user  %}
+            <a href="{% url 'edit-post' id=post.pk %}">
+              <span class="icon"><i class="fa fa-laptop"></i></span> Edit
+            </a>
+          {% endif %}
         </div>
       </div>
 
