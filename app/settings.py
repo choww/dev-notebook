@@ -132,9 +132,9 @@ LOGGING = {
     }
 }
 
-EMAIL_USE_TLS = False
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = 'carmenn.choww@gmail.com'
+#EMAIL_USE_TLS = not DEBUG
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ['DEV_EMAIL_USER']
+EMAIL_HOST_PASSWORD = os.environ['DEV_EMAIL_PW']
