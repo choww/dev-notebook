@@ -3,6 +3,14 @@
     <a href="/" class="navbar-item has-text-centered">
       <h6 class="logo">DB</h6>
     </a>
+
+    <nav-burger inline-template="true">   
+      <button class="button navbar-burger" v-on:click="toggle" v-bind:class="{'is-active': active}">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav-burger>
   </div>
   <div class="navbar-menu">
     <div class="navbar-end">
@@ -10,14 +18,14 @@
         <span class="navbar-item">
           <a href="{% url 'new-post' %}" class="button is-primary">New Post</a>
         </span>
-
+      
         <a class="navbar-item" href="{% url 'all-posts' username=request.user.username %}">Posts</a>
         <a class="navbar-item" href="{% url 'account' %}">Profile</a>
         <a class="navbar-item" href="{% url 'logout' %}" method="DELETE">Logout</a>
       {% else %}
         <a class="navbar-item" href="/login">Login</a>
         <span class="navbar-item">
-          <a class="button is-primary is-seethru" href="/signup">Sign Up</a>
+          <a class="button is-primary" href="/signup">Sign Up</a>
         </span>
       {% endif %}
     </div>

@@ -1,6 +1,8 @@
 Dev Notebook
 ============
 
+Version 1.0 of this app is live! [https://devbase.herokuapp.com](https://devbase.herokuapp.com)
+
 # Stack
 * Django 1.11.6
 * PostgreSQL 9.x

@@ -21,7 +21,6 @@ header {
   background-size: cover;
 }
 
-
 .sticky { 
   position: fixed;
   width: 100%; 
@@ -39,16 +38,11 @@ header {
 
 .hero-landing {
   background: url(/assets/images/hero3.jpg) no-repeat center center fixed;
-}
-
-.hero-landing {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   color: #fff; 
-  height: 100%; 
-
 }
 
 h1,h2 { font-family: 'Amatic SC'; }
@@ -72,4 +66,25 @@ h6 { font-size: $size-4; }
 
 section {
   .subtitle { color: $brown }
+}
+
+.navbar-burger { 
+  background: transparent;
+  span { 
+    background: $brown; 
+    height: 2px;
+  }
+}
+.navbar-menu { 
+  background: rgba(#fff, 0.1); 
+}
+
+// MEDIA QUERIES
+@include tablet {
+  .sticky { position: relative; }
+}
+
+@include mobile {
+  h1 { font-size: $size-2; }
+  .sticky { position: relative; }
 }

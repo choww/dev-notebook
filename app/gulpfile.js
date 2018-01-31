@@ -4,6 +4,7 @@ var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var vueify = require('vueify');
 var buffer = require('vinyl-buffer');
+var stream = require('event-stream');
 
 gulp.task('sass', function() {
   return gulp.src('assets/scss/*.scss')
@@ -11,12 +12,19 @@ gulp.task('sass', function() {
              .pipe(gulp.dest('assets/css'))
 });
 
-gulp.task('vueify', function() {
-  return browserify('./assets/vue/tags.js')
-         .transform(vueify)
-         .bundle()
-         .pipe(source('tags.js'))
-         .pipe(gulp.dest('./assets/js'))
+gulp.task('vueify', function() {  
+  var fileDir = './assets/vue/';
+  var files = ['tags.js',
+               'navbar.js'];
+
+  var tasks = files.map(function(file) {
+    return browserify(fileDir + file)
+           .transform(vueify)
+           .bundle()
+           .pipe(source(file))
+           .pipe(gulp.dest('./assets/js'));
+  });
+  return stream.merge.apply(null, tasks);
 });
 
 gulp.task('jsBundle', function() {

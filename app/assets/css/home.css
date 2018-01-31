@@ -4407,8 +4407,8 @@ a.navbar-item:hover, a.navbar-item.is-active,
     .navbar.is-transparent .navbar-item.has-dropdown.is-active .navbar-link, .navbar.is-transparent .navbar-item.has-dropdown.is-hoverable:hover .navbar-link {
       background-color: transparent !important; }
     .navbar.is-transparent .navbar-dropdown a.navbar-item:hover {
-      background-color: rgba(255, 255, 255, 0.4);
-      color: #fff; }
+      background-color: whitesmoke;
+      color: #0a0a0a; }
     .navbar.is-transparent .navbar-dropdown a.navbar-item.is-active {
       background-color: whitesmoke;
       color: #009FE6; }
@@ -4468,8 +4468,8 @@ a.navbar-item:hover, a.navbar-item.is-active,
     .navbar-dropdown a.navbar-item {
       padding-right: 3rem; }
       .navbar-dropdown a.navbar-item:hover {
-        background-color: rgba(255, 255, 255, 0.4);
-        color: #fff; }
+        background-color: whitesmoke;
+        color: #0a0a0a; }
       .navbar-dropdown a.navbar-item.is-active {
         background-color: whitesmoke;
         color: #009FE6; }
@@ -6167,15 +6167,12 @@ header {
     transition: font-size 1s; }
 
 .hero-landing {
-  background: url(/assets/images/hero3.jpg) no-repeat center center fixed; }
-
-.hero-landing {
+  background: url(/assets/images/hero3.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  color: #fff;
-  height: 100%; }
+  color: #fff; }
 
 h1, h2 {
   font-family: 'Amatic SC'; }
@@ -6205,3 +6202,22 @@ h6 {
 
 section .subtitle {
   color: #8c706b; }
+
+.navbar-burger {
+  background: transparent; }
+  .navbar-burger span {
+    background: #8c706b;
+    height: 2px; }
+
+.navbar-menu {
+  background: rgba(255, 255, 255, 0.1); }
+
+@media screen and (min-width: 769px), print {
+  .sticky {
+    position: relative; } }
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 5rem; }
+  .sticky {
+    position: relative; } }

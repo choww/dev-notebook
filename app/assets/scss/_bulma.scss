@@ -20,10 +20,6 @@ $navbar-item-hover-color: #fff;
 $navbar-item-active-color: #fff; 
 $navbar-item-active-background-color: $red;
 
-$navbar-dropdown-arrow: $blue; 
-$navbar-dropdown-item-hover-color: #fff; 
-$navbar-dropdown-item-hover-background-color: $seethru-white; 
-
 $input-color: $brown; 
 $input-border-color: $brown;
 $input-background-color: transparent;
@@ -31,4 +27,4 @@ $input-shadow: none;
 
 $hr-background-color: lighten($brown, 25%);
 
-@import '../../node_modules/bulma/bulma.sass';
+@import '../../../node_modules/bulma/bulma.sass';
