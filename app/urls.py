@@ -19,8 +19,8 @@ urlpatterns = [
     url(r'^posts/delete/(?P<id>\d+)/$', notebook_views.destroy, name='delete-post'),
     url(r'^(?P<username>\w+)/$', notebook_views.index, name='all-posts'),
 
+    url(r'^forgot-password/done', auth_views.password_reset_done),
     url(r'^forgot-password', auth_views.password_reset, {'post_reset_redirect': '/forgot-password/done'}, name="forgot-pw"),
-    url(r'^forgot-password/done/$', auth_views.password_reset_done),
     url(r'^password-reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', 
         auth_views.password_reset_confirm, 
         {'post_reset_redirect' : '/login'},
