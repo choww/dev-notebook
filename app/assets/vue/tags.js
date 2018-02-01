@@ -1,7 +1,7 @@
 var Vue = require('vue/dist/vue');
 var $ = require('jquery');
 
-Vue.component('tag-form', {
+var tags = Vue.component('tag-form', {
   props: ['currTags'],
   data: function() {
     return { tags: this.currTags || '' }
@@ -25,9 +25,22 @@ Vue.component('tag-form', {
     </div>`
 });
 
+var deleteBtn = Vue.component('delete-btn', {
+  data: function() {
+    return { clicked: false };
+  },
+  methods: {
+    click: function() {
+      this.clicked = !this.clicked; 
+    }
+  }
+});
+
 
 if ($('.post-form').length > 0) {
   new Vue({
-    el: '.post-form'
+    el: '.post-form',
+    components: { 'delete-btn': deleteBtn,
+      'tag-form': tags }
   });
 }

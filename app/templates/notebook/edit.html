@@ -21,15 +21,23 @@
         <button type="submit" class="button is-info">Submit</button>
       </div>
     </div>
+    
+    <delete-btn inline-template>
+      <div class="field">
+        <div class="control">
+          <a class="button is-danger" v-on:click="click">
+            <span class="icon is-small"><i class="fa fa-trash"></i></span>
+            <span>Delete</span>
+          </a>
 
-    <div class="field">
-      <div class="control">
-        <a href="{% url 'delete-post' id=pk %}" class="button is-danger">
-          <span class="icon is-small"><i class="fa fa-trash"></i></span>
-          <span>Delete</span>
-        </a>
+          <div v-if="clicked"> 
+            <hr/>
+            <p> Are you sure you want to delete this post?</p> 
+            <a href="{% url 'delete-post' id=pk %}" class="button is-danger">Yes, delete this post</a>
+            <a class="button is-info" v-on:click="clicked = false">No, I changed my mind</a>
+        </div>
       </div>
-    </div>
+    </delete-btn>
   </form>
 {% endblock %}
   
