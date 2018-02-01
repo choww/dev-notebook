@@ -46,9 +46,10 @@ class EditPostForm(forms.ModelForm):
         post.body = self.cleaned_data['body']
         categories = self.cleaned_data['categories']
         post.save()
+        post.tag_set.all().delete();
         for tag in categories.split(','):
             category = Category.objects.get_or_create(name=tag.strip())[0]
-            Tag.objects.get_or_create(user=post.user, 
+            Tag.objects.create(user=post.user, 
                                       post=post,
                                       category=category)
         return post
