@@ -43,6 +43,8 @@ header {
   -o-background-size: cover;
   background-size: cover;
   color: #fff; 
+  .columns { font-size: 1.5rem; }
+  a { color: $brown; }
 }
 
 h1,h2 { font-family: 'Amatic SC'; }
@@ -74,9 +76,6 @@ section {
     background: $brown; 
     height: 2px;
   }
-}
-.navbar-menu { 
-  background: rgba(#fff, 0.1); 
 }
 
 // MEDIA QUERIES

@@ -6173,6 +6173,10 @@ header {
   -o-background-size: cover;
   background-size: cover;
   color: #fff; }
+  .hero-landing .columns {
+    font-size: 1.5rem; }
+  .hero-landing a {
+    color: #8c706b; }
 
 h1, h2 {
   font-family: 'Amatic SC'; }
@@ -6208,9 +6212,6 @@ section .subtitle {
   .navbar-burger span {
     background: #8c706b;
     height: 2px; }
-
-.navbar-menu {
-  background: rgba(255, 255, 255, 0.1); }
 
 @media screen and (min-width: 769px), print {
   .sticky {
