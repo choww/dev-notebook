@@ -6167,7 +6167,7 @@ header {
     transition: font-size 1s; }
 
 .hero-landing {
-  background: url(/assets/images/hero3.jpg) no-repeat center center fixed;
+  background: url(/assets/images/hero5.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -6176,7 +6176,7 @@ header {
   .hero-landing .columns {
     font-size: 1.5rem; }
   .hero-landing a {
-    color: #8c706b; }
+    color: #fff; }
 
 h1, h2 {
   font-family: 'Amatic SC'; }
