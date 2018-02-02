@@ -6177,6 +6177,8 @@ header {
     font-size: 1.5rem; }
   .hero-landing a {
     color: #fff; }
+  .hero-landing .navbar-menu {
+    background: rgba(0, 0, 0, 0.5); }
 
 h1, h2 {
   font-family: 'Amatic SC'; }
