@@ -1,18 +1,18 @@
 {% extends 'columns.html' %}
-{% block title %} | All Posts{% endblock %}
+{% block title %} | All Posts tagged {{ category.name }} {% endblock %}
 
-{% block page_name %}Posts{% endblock %}
+{% block page_name %}Posts tagged '{{ category.name }}'{% endblock %}
 {% block content %}
-  {% for post in posts %}
+  {% for tag in tagged_posts %}
     <section class="section">
       <div class="columns">
         <div class="column">
-          <h2 class="title">{{ post.title }}</h2> 
-          <div class="subtitle">{{ post.date|date:"l F d Y H:i" }}</div>
+          <h2 class="title">{{ tag.post.title }}</h2> 
+          <div class="subtitle">{{ tag.post.date|date:"l F d Y H:i" }}</div>
         </div>
         <div class="column has-text-right-tablet">
           {% if request.user.is_authenticated and request.user == post.user  %}
-            <a href="{% url 'edit-post' id=post.pk %}">
+            <a href="{% url 'edit-post' id=tag.post.pk %}">
               <span class="icon"><i class="fa fa-laptop"></i></span> Edit
             </a>
           {% endif %}
@@ -21,15 +21,13 @@
 
       <hr/>
 
-      <div>{{ post.body|safe|linebreaks|urlize }}</div>
+      <div>{{ tag.post.body|safe|linebreaks|urlize }}</div>
 
       <hr/>
       <div class="tags">
         <span>Tags: </span>
-        {% for tag in post.tag_set.all %}
-          <span class="tag is-info">
-            <a href="{% url 'tag' name=tag.category.name %}">{{ tag.category.name }}</a>
-          </span>
+        {% for tag in tag.post.tag_set.all %}
+          <span class="tag is-info">{{ tag.category.name }}</span>
         {% endfor %}    
       </div>
     </section>

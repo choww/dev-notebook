@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^edit-post/(?P<id>\d+)/$', notebook_views.edit, name='edit-post'),
     url(r'^posts/delete/(?P<id>\d+)/$', notebook_views.destroy, name='delete-post'),
     url(r'^(?P<username>\w+)/$', notebook_views.index, name='all-posts'),
+    url(r'^tags/(?P<name>\w+)/$', notebook_views.tag, name='tag'),
 
     url(r'^forgot-password/done', auth_views.password_reset_done),
     url(r'^forgot-password', auth_views.password_reset, {'post_reset_redirect': '/forgot-password/done'}, name="forgot-pw"),

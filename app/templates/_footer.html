@@ -1,0 +1,9 @@
+<footer class="footer">
+  <div class="container tags">
+    {% for tag in user.tag_set.all %} 
+      <span class="tag is-info">
+        <a href="{% url 'tag' name=tag.category.name %}">{{ tag.category.name }}</a>
+      </span>
+    {% endfor %}
+  </div>
+</footer>

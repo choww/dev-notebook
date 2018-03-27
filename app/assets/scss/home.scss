@@ -65,6 +65,7 @@ h6 { font-size: $size-4; }
 // TAGS
 .tags { 
   span:first-child { margin: auto 0.5rem 0.5rem 0; }
+  a { color: #fff; }
   .tag.is-info:nth-child(3n+2) { background: $green; }
   .tag.is-info:nth-child(3n+1) { background: $red; }
 }

@@ -6200,6 +6200,9 @@ h6 {
 .tags span:first-child {
   margin: auto 0.5rem 0.5rem 0; }
 
+.tags a {
+  color: #fff; }
+
 .tags .tag.is-info:nth-child(3n+2) {
   background: #7CB20A; }
 
