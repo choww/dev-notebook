@@ -28,7 +28,9 @@
         <span>Tags: </span>
         {% for tag in post.tag_set.all %}
           <span class="tag is-info">
-            <a href="{% url 'tag' name=tag.category.name %}">{{ tag.category.name }}</a>
+            <a href="{% url 'tag' name=tag.category.name, username=user.username %}">
+              {{ tag.category.name }}
+            </a>
           </span>
         {% endfor %}    
       </div>
