@@ -27,4 +27,4 @@ Version 1.0 of this app is live! [https://devbase.herokuapp.com](https://devbase
 * Run `python manage.py runserver`
 
 # Contact
-* carmenn.choww@gmail.com
+* carmenchow@protonmail.com
