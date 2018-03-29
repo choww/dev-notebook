@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import *
-import pdb
+from .helpers import *
 
 @login_required
 def create(request):
@@ -12,14 +12,14 @@ def create(request):
             return redirect('/'+request.user.username)
     else: 
         form = CreatePostForm()
-    return render(request, 'notebook/new.html', {'form': form}) 
+    return render(request, 'notebook/new.html', {'form': form, 'tags': tags(request.user)}) 
 
 def index(request, username):
     user = User.objects.get(username=username)
     posts = user.post_set.all().order_by('-date')
     return render(request, 
                   'notebook/index.html', 
-                  {'posts': posts})
+                  {'posts': posts, 'tags': tags(user)})
 
 @login_required
 def edit(request, id):
@@ -32,13 +32,13 @@ def edit(request, id):
         if form.is_valid():
             form.save(post)
             return redirect('/'+request.user.username)
-    return render(request, 'notebook/edit.html', {'form': form, 'pk': id})
+    return render(request, 'notebook/edit.html', {'form': form, 'pk': id, 'tags': tags(request.user)})
 
 @login_required
 def tag(request, name):
     category = get_object_or_404(Category, name=name)
-    tagged_posts = category.tag_set.filter(user_id=request.user.id).order_by('-post_id')
-    return render(request, 'tag/show.html', {'tagged_posts': tagged_posts, 'category': category})
+    tagged_posts = request.user.tag_set.filter(category_id=category.id).order_by('-post_id')
+    return render(request, 'tag/show.html', {'tagged_posts': tagged_posts, 'category': category, 'tags':  tags(request.user)})
 
 @login_required
 def destroy(request, id):
