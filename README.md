@@ -4,7 +4,7 @@ Dev Notebook
 Version 1.0 of this app is live! [https://devbase.herokuapp.com](https://devbase.herokuapp.com)
 
 # Stack
-* Django 1.11.6
+* Django 4.0.4
 * PostgreSQL 9.x
 * Gulp 3.9.1
 * Vue.js 2.x
@@ -25,6 +25,22 @@ Version 1.0 of this app is live! [https://devbase.herokuapp.com](https://devbase
 * Make sure the virtual environment is activated: `source env/bin/activate`
 * Switch to the `app` directory from the root directory of the project
 * Run `python manage.py runserver`
+
+# Deploy
+
+## First time set up
+
+Install python build pack
+```sh
+heroku create --buildpack https://github.com/heroku/heroku-buildpack-python.git
+```
+
+Add `runtime.txt` to the root of the project and specify the [Python version](https://devcenter.heroku.com/articles/python-runtimes)
+
+Deploy: 
+```
+git push heroku main
+```
 
 # Contact
 * carmenchow@protonmail.com

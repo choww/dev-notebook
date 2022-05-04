@@ -17,18 +17,18 @@
   },
   "homepage": "https://github.com/choww/dev-notebook#readme",
   "devDependencies": {
-    "browserify": "^14.5.0",
-    "bulma": "^0.6.0",
-    "event-stream": "^3.3.4",
-    "gulp": "^3.9.1",
-    "gulp-sass": "^3.1.0",
-    "jquery": "^3.2.1",
+    "browserify": "^17.0.0",
+    "bulma": "^0.9.3",
+    "event-stream": "^4.0.1",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "jquery": "^3.6.0",
     "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^1.1.0",
+    "vinyl-source-stream": "^2.0.0",
     "vueify": "^9.4.1",
-    "vuejs": "^2.0.12"
+    "vue": "^3.2.33"
   },
   "dependencies": {
-    "highlightjs": "^9.10.0"
+    "highlightjs": "^11.5.1"
   }
 }
