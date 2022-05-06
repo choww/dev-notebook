@@ -1,0 +1,28 @@
+version: "3"
+
+networks:
+  devbook:
+
+services:
+  app:
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - postgres
+    environment:
+      - DB_USER=carmen
+      - DB_PW=test
+    networks:
+      - devbook
+    ports:
+      - "3000:3000"
+    restart: always
+  postgres:
+    container_name: postgres
+    image: postgres:14.2-alpine
+    networks:
+      - devbook
+    ports:
+      - "5432:5432"
+    restart: always

@@ -29,6 +29,6 @@
     "vue": "^3.2.33"
   },
   "dependencies": {
-    "highlightjs": "^11.5.1"
+    "highlight.js": "^11.5.1"
   }
 }

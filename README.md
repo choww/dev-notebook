@@ -5,14 +5,15 @@ Version 1.0 of this app is live! [https://devbase.herokuapp.com](https://devbase
 
 # Stack
 * Django 4.0.4
-* PostgreSQL 9.x
-* Gulp 3.9.1
-* Vue.js 2.x
-* Bulma
+* PostgreSQL 14.x
+* Gulp 4.x
+* Vue.js 3.x
+* Docker 
 
 # Set up
 * Clone this repository: `git clone https://github.com/choww/dev-notebook.git`
 * Enter the directory: `cd dev-notebook`
+* Run `docker-compose up`
 * Run `npm install`
 * Create a Postgres database called `dev_notebook`
 * From the project's root directory: 
